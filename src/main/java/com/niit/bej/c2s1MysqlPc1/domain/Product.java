@@ -3,6 +3,8 @@ package com.niit.bej.c2s1MysqlPc1.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.util.Objects;
+
 @Entity
 public class Product {
     @Id
@@ -51,5 +53,18 @@ public class Product {
 
     public void setAmountInStock(int amountInStock) {
         this.amountInStock = amountInStock;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return productId == product.productId && amountInStock == product.amountInStock && Objects.equals(productName, product.productName) && Objects.equals(productDescription, product.productDescription);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productId, productName, productDescription, amountInStock);
     }
 }
