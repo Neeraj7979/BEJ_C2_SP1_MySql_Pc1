@@ -39,8 +39,7 @@ public class ProductServiceImpl implements ProductService {
         if (optionalProduct.isPresent()) {
             productRepository.deleteById(id);
             return true;
-        } else
-            return false;
+        } else return false;
 
     }
 }
